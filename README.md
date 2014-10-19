@@ -1,31 +1,13 @@
-Meteor SuperChat with Meteor Streams
+CodersTV Chat
 ================
 
-Smart package for SuperChat Streams. It is a chat that includes Social Login and Github Flavored Markdown and do not use MongoDB for persistence, but uses Meteor Streams for direct messaging between clients.
-
-Works with Meteor release 0.6.4.1 and below only.
-
-If you want persistence see
-[SuperChat](https://github.com/gabrielhpugliese/meteor_superchat) instead.
-
-## Demo
-
-http://superchat-streams.meteor.com
-
-### Mantained by CodersTV
-
-This package is used and mantained by [CodersTV](http://coderstv.com)
+Smart package for CodersTV' chat. It uses Arunoda's Meteor Streams.
 
 ## Install
 
 To install in a new project:
 ```bash
-> mrt add superchat-streams
-```
-
-To update an existing project:
-```bash
-> mrt update superchat-streams
+> meteor add coderstv:chat
 ```
 
 ## Quick Start
@@ -33,8 +15,6 @@ To update an existing project:
 You need to configure at least one kind of account. Supported social plataforms now are:
 * Facebook
 * Google
-* ~~Twitter~~ (Twitter API v1.1 requires OAuth authenticated requests to
-  get profile picture)
 
 For example, with Google:
 
@@ -70,28 +50,6 @@ Router.map(function () {
         }
     });
 });
-```
-
-### Example with mini-pages
-```javascript
-Meteor.pages({
-  '/': {to: 'index', before: setPath}
-});
-
-function setPath () {
-  Path.set(Meteor.router.path());
-}
-```
-
-### Example with router
-```javascript
-Meteor.Router.add({
-  '/': { to: 'index', and: setPath}
-});
-
-function setPath () {
-  Path.set(Meteor.Router.page());
-}
 ```
 
 ### Making height responsive
