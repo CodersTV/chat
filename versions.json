@@ -129,6 +129,10 @@
       "1.0.7"
     ],
     [
+      "natestrauser:font-awesome",
+      "4.2.0"
+    ],
+    [
       "observe-sequence",
       "1.0.3"
     ],

@@ -1,6 +1,6 @@
 Package.describe({
   summary: "CodersTV Chat",
-  version: "0.1.0",
+  version: "0.1.1",
   git: "https://github.com/CodersTV/chat",
   name: "coderstv:chat"
 });
@@ -23,7 +23,8 @@ Package.onUse(function (api, where) {
     'templating',
     'less',
     'jquery',
-    'coderstv:reactive-path@0.2.1'
+    'coderstv:reactive-path@0.2.1',
+    'natestrauser:font-awesome@4.2.0'
   ], 'client');
 
   api.add_files([
