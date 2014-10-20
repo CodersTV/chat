@@ -12,8 +12,8 @@ Package.onUse(function (api, where) {
   api.use([
     'meteor',
     'standard-app-packages',
-    'tmeasday:presence', 
-    'lepozepo:streams'
+    'tmeasday:presence@1.0.0', 
+    'lepozepo:streams@0.2.0'
   ], both);
 
   api.use([
@@ -23,7 +23,7 @@ Package.onUse(function (api, where) {
     'templating',
     'less',
     'jquery',
-    'coderstv:reactive-path'
+    'coderstv:reactive-path@0.2.1'
   ], 'client');
 
   api.add_files([
