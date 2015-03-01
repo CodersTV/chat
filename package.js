@@ -1,6 +1,6 @@
 Package.describe({
   summary: "CodersTV Chat",
-  version: "0.1.1",
+  version: "0.2.0",
   git: "https://github.com/CodersTV/chat",
   name: "coderstv:chat"
 });
@@ -12,7 +12,7 @@ Package.onUse(function (api, where) {
   api.use([
     'meteor',
     'standard-app-packages',
-    'tmeasday:presence@1.0.0', 
+    'tmeasday:presence@1.0.0',
     'lepozepo:streams@0.2.0'
   ], both);
 

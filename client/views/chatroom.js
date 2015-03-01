@@ -44,7 +44,7 @@ Template.chatroom.removeLastMessage = function () {
 
 Template.chatroom.sendMsg = function () {
     var user = Meteor.user();
-    if (! user || 
+    if (! user ||
         (user.superchat && typeof user.superchat.canChat !== 'undefined' && !user.superchat.canChat)) {
         return;
     }
@@ -59,7 +59,7 @@ Template.chatroom.sendMsg = function () {
     }
 
     var owner = Meteor.userId(),
-        host = Path(true),
+        host = Session.get('chatHost') || Path(true),
         action = 'says';
 
     Template.chatroom.removeLastMessage();
@@ -72,7 +72,7 @@ Template.chatroom.sendMsg = function () {
     });
     superChatStream.emit('chat', message, host);
     Template.chatroom.scrollToBottom();
-    
+
 };
 
 Template.chatroom.insertAtCaret = function(txtarea, text) {
@@ -118,8 +118,8 @@ Template.chatroom.rendered = function () {
     });
   });
 
-  self.banDeps = Deps.autorun(function banUserWhenFlood () {
-    if (! usersSubs.ready()) {
+  self.banDeps = Deps.autorun(function banUserOnFlood () {
+    if (! Session.equals('chatSubsReady', true)) {
       return;
     }
 
@@ -149,7 +149,9 @@ Template.chatroom.destroyed = function () {
 
 Template.chatroom.helpers({
   msgs: function () {
-    return superChatMsgs.find({host: Path(true)}, {limit: Superchat.messageLimitOnScreen});
+    var host = Session.get('chatHost') || Path(true);
+
+    return superChatMsgs.find({host: host}, {limit: Superchat.messageLimitOnScreen});
   },
   getProfile: function (userId) {
     return userId && Meteor.users.findOne({_id: userId}).superchat;
@@ -161,7 +163,7 @@ Template.chatroom.helpers({
 
     if (_.isEmpty(ids))
       return;
-    
+
     query = ids.map(function (id) {
       return { _id: id };
     });
